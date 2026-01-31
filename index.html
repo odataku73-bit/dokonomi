@@ -8,7 +8,6 @@
       gtag('js', new Date());
       gtag('config', 'G-HQLS93679W');
 
-      // クリック計測用スクリプト
       function trackClick(label) {
         gtag('event', 'click', {
           'event_category': 'cta',
@@ -25,14 +24,13 @@
     <style>
         :root {
             --primary-green: #5CB85C;
-            --dark-green: #449D44;
             --bg-light: #F0F7F0;
             --text-main: #2D3436;
             --text-sub: #636E72;
             --white: #ffffff;
             --accent-red: #D9534F;
             --accent-blue: #337AB7;
-            --header-height: 70px;
+            --header-height: 60px;
         }
 
         body {
@@ -41,141 +39,98 @@
             padding-top: var(--header-height);
             color: var(--text-main);
             background-color: var(--white);
-            line-height: 1.8;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         .text-center { text-align: center; }
 
         /* --- Animations --- */
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(92, 184, 92, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(92, 184, 92, 0); }
+            70% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(92, 184, 92, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(92, 184, 92, 0); }
         }
-        @keyframes bounce { 
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
-            40% {transform: translateY(-10px);} 
-        }
 
-        /* --- ボタン共通アニメーション --- */
-        .cta-button, .nav-btn, .btn-contact {
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-        }
-        .cta-button:hover, .nav-btn:hover, .btn-contact:hover {
-            transform: scale(1.08) translateY(-3px);
-            opacity: 0.9;
-        }
-        .cta-button:active, .nav-btn:active, .btn-contact:active {
-            transform: scale(0.95);
-        }
-
-        /* --- 固定ヘッダー --- */
+        /* --- Fixed Header --- */
         .fixed-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: var(--header-height);
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
             z-index: 1000;
             display: flex;
             align-items: center;
         }
-        .header-container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-        .header-logo { font-weight: 900; font-size: 1.4rem; color: var(--primary-green); text-decoration: none; }
-        .header-nav { display: flex; gap: 12px; }
-        .nav-btn { text-decoration: none; font-size: 0.85rem; font-weight: 700; padding: 8px 16px; border-radius: 50px; }
+        .header-container { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
+        .header-logo { font-weight: 900; font-size: 1.1rem; color: var(--primary-green); text-decoration: none; }
+        .header-nav { display: flex; gap: 8px; }
+        .nav-btn { text-decoration: none; font-size: 0.75rem; font-weight: 700; padding: 6px 12px; border-radius: 50px; }
         .nav-btn-contact { color: var(--text-main); border: 1px solid #ddd; }
         .nav-btn-use { background: var(--primary-green); color: #fff; }
 
         /* --- Hero --- */
-        .hero { padding: 60px 0 100px; background: radial-gradient(circle at top right, #EAF7E9 0%, #ffffff 70%); border-bottom: 1px solid #eee; }
-        .hero-logo-main { font-weight: 900; color: var(--primary-green); font-size: 2.2rem; margin-bottom: 10px; }
-        h1 { font-size: 3.2rem; font-weight: 900; line-height: 1.2; margin: 0 0 20px; letter-spacing: -0.02em; }
-        .hero-sub-top { font-size: 1.2rem; font-weight: 700; color: var(--text-sub); margin-bottom: 40px; }
-        .hero-sub-bottom { font-size: 1.1rem; color: var(--text-main); line-height: 1.6; max-width: 700px; margin: 40px auto; }
+        .hero { padding: 40px 0 60px; background: radial-gradient(circle at top right, #EAF7E9 0%, #ffffff 70%); }
+        .hero-logo-main { font-weight: 900; color: var(--primary-green); font-size: 1.5rem; margin-bottom: 5px; }
+        h1 { font-size: 2.2rem; font-weight: 900; line-height: 1.3; margin: 0 0 15px; }
+        .hero-sub-top { font-size: 0.95rem; font-weight: 700; color: var(--text-sub); margin-bottom: 30px; padding: 0 10px; }
+        .hero-sub-bottom { font-size: 0.95rem; color: var(--text-main); margin: 30px auto; max-width: 90%; }
+        
         .cta-button { 
-            display: inline-block; background: var(--primary-green); color: #fff; padding: 22px 60px; border-radius: 100px; 
-            text-decoration: none; font-weight: 900; font-size: 1.4rem; box-shadow: 0 10px 25px rgba(92, 184, 92, 0.4); 
+            display: inline-block; background: var(--primary-green); color: #fff; padding: 18px 40px; border-radius: 100px; 
+            text-decoration: none; font-weight: 900; font-size: 1.1rem; box-shadow: 0 8px 20px rgba(92, 184, 92, 0.3); 
             animation: pulse 2.5s infinite; 
         }
 
-        /* スマホ画像コンテナ */
-        .mockup-container { 
-            width: 320px; 
-            height: auto; 
-            margin: 0 auto; 
-            display: block; 
-            position: relative; 
-        }
-        .mockup-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .mockup-container { width: 200px; margin: 0 auto; }
+        .mockup-container img { width: 100%; height: auto; }
 
-        /* --- 悩みセクション --- */
-        .pain-section { padding: 100px 0; }
-        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin: 50px 0; }
-        .pain-card { 
-            background: #fff; 
-            border: 2px solid #E0EEDE; 
-            border-radius: 20px; 
-            padding: 40px 20px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.07); 
-            transition: 0.3s ease;
-        }
-        .pain-card:hover { border-color: var(--primary-green); box-shadow: 0 20px 45px rgba(92, 184, 92, 0.15); }
-        .pain-illustration { font-size: 4rem; color: var(--primary-green); margin-bottom: 20px; display: block; }
-        .arrow-divider { font-size: 4rem; color: var(--primary-green); margin: 40px 0; animation: bounce 2s infinite; }
-        .brand-highlight { color: var(--primary-green); font-size: 4.5rem; display: block; font-weight: 900; }
+        /* --- Pain Section --- */
+        .pain-section { padding: 60px 0; }
+        h2 { font-size: 1.6rem; font-weight: 900; margin-bottom: 40px; position: relative; display: inline-block; }
+        h2::after { content: ""; position: absolute; bottom: -8px; left: 0; width: 100%; height: 3px; background: var(--primary-green); }
+        
+        .pain-grid { display: grid; gap: 20px; margin: 30px 0; }
+        .pain-card { background: #fff; border: 1px solid #E0EEDE; border-radius: 15px; padding: 25px 15px; }
+        .pain-illustration { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 10px; display: block; }
+        .brand-highlight { color: var(--primary-green); font-size: 2.8rem; font-weight: 900; display: block; margin: 10px 0; }
 
-        /* --- 特徴 --- */
-        .feature-section { padding: 100px 0; background-color: var(--bg-light); border-top: 1px solid #e0ede0; border-bottom: 1px solid #e0ede0; }
-        h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 60px; position: relative; display: inline-block; }
-        h2::after { content: ""; position: absolute; bottom: -10px; left: 0; width: 100%; height: 4px; background: var(--primary-green); border-radius: 2px; }
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
-        .feature-card { background: var(--white); padding: 40px; border-radius: 30px; }
-        .feature-card i { font-size: 3rem; color: var(--primary-green); margin-bottom: 20px; }
+        /* --- Feature --- */
+        .feature-section { padding: 60px 0; background-color: var(--bg-light); }
+        .feature-grid { display: grid; gap: 20px; margin-bottom: 40px; }
+        .feature-card { background: var(--white); padding: 30px 20px; border-radius: 20px; }
+        .feature-card i { font-size: 2.2rem; color: var(--primary-green); margin-bottom: 15px; }
+        .feature-card h3 { font-size: 1.2rem; margin: 10px 0; }
 
-        /* --- 流れ --- */
-        .flow-section { padding: 100px 0; }
-        .flow-container { max-width: 800px; margin: 0 auto; }
-        .flow-step { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 15px; background: var(--bg-light); padding: 25px; border-radius: 20px; text-align: left; border: 1px solid #e0ede0; }
-        .step-num { background: var(--primary-green); color: #fff; width: 35px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; margin-top: 5px; }
-        .flow-content strong { font-size: 1.3rem; font-weight: 900; color: var(--text-main); display: block; margin-bottom: 4px; }
-        .flow-content p { font-size: 0.95rem; color: var(--text-sub); }
+        /* --- Flow --- */
+        .flow-section { padding: 60px 0; }
+        .flow-step { display: flex; gap: 15px; margin-bottom: 12px; background: var(--bg-light); padding: 20px; border-radius: 15px; text-align: left; }
+        .step-num { background: var(--primary-green); color: #fff; width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; font-size: 0.9rem; }
+        .flow-content strong { font-size: 1.1rem; display: block; }
+        .flow-content p { font-size: 0.85rem; margin: 4px 0 0; color: var(--text-sub); }
 
-        /* --- FAQ --- */
-        .faq-section { padding: 100px 0; background-color: var(--bg-light); border-top: 1px solid #e0ede0; }
-        .faq-item { text-align: left; margin-bottom: 15px; background: var(--white); padding: 25px; border-radius: 15px; }
-        .faq-q { font-weight: 900; color: var(--primary-green); font-size: 1.1rem; margin-bottom: 5px; }
+        /* --- Contact --- */
+        .contact-section { padding: 60px 0; background-color: var(--bg-light); }
+        .contact-card { background: #fff; padding: 30px 20px; border-radius: 20px; margin-bottom: 20px; }
+        .btn-contact { display: block; padding: 14px; border-radius: 50px; color: #fff; text-decoration: none; font-weight: 900; font-size: 0.9rem; }
+        .btn-red { background: var(--accent-red); }
+        .btn-blue { background: var(--accent-blue); }
 
-        /* --- お問い合わせ --- */
-        .contact-section { padding: 100px 0; background-color: var(--bg-light); border-top: 1px solid #e0ede0; }
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .contact-card { background: #fff; padding: 40px 30px; border-radius: 30px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .contact-icon { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem; color: #fff; }
-        .icon-red { background-color: var(--accent-red); }
-        .icon-blue { background-color: var(--accent-blue); }
-        .btn-contact { display: block; padding: 16px; border-radius: 50px; color: #fff; text-decoration: none; font-weight: 900; }
-        .btn-red { background: var(--accent-red); box-shadow: 0 6px 15px rgba(217, 83, 79, 0.3); }
-        .btn-blue { background: var(--accent-blue); box-shadow: 0 6px 15px rgba(51, 122, 183, 0.3); }
+        .final-area { padding: 80px 0; }
+        .final-message { font-size: 1.6rem; font-weight: 900; margin-bottom: 30px; }
 
-        .final-area { padding: 120px 0; background: var(--white); border-top: 1px solid #eee; }
-        .final-message { font-size: 2.2rem; font-weight: 900; margin-bottom: 50px; line-height: 1.4; }
+        footer { background: #2D3436; color: #fff; padding: 40px 0; font-size: 0.75rem; }
 
-        footer { background: #2D3436; color: #fff; padding: 60px 0; }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            .brand-highlight { font-size: 3.5rem; }
-            .header-logo { font-size: 1.1rem; }
-            .mockup-container { width: 240px; }
+        /* PC等、画面が広い時用の調整 */
+        @media (min-width: 600px) {
+            h1 { font-size: 3rem; }
+            .pain-grid, .feature-grid { grid-template-columns: repeat(3, 1fr); }
+            .mockup-container { width: 260px; }
+            .brand-highlight { font-size: 4rem; }
         }
     </style>
 </head>
@@ -186,7 +141,7 @@
             <a href="#" class="header-logo">ドコノミ</a>
             <nav class="header-nav">
                 <a href="https://forms.gle/DQpruPpwVG5qfceE8" target="_blank" onclick="trackClick('Contact_Header')" class="nav-btn nav-btn-contact">お問い合わせ</a>
-                <a href="https://lin.ee/UvyrQHpY" target="_blank" onclick="trackClick('LINE_Header')" class="nav-btn nav-btn-use">ドコノミを利用</a>
+                <a href="https://lin.ee/UvyrQHpY" target="_blank" onclick="trackClick('LINE_Header')" class="nav-btn nav-btn-use">利用する</a>
             </nav>
         </div>
     </header>
@@ -195,16 +150,14 @@
         <div class="container">
             <div class="hero-logo-main">ドコノミ</div>
             <h1>1秒で決めて、<br>即入店。</h1>
-            <p class="hero-sub-top">もう、2軒目探しでグダらない。ススキノの空席を、最短0秒で</p>
+            <p class="hero-sub-top">もう、2軒目探しでグダらない。<br>ススキノの空席を、最短0秒で</p>
             
             <div class="mockup-container">
                 <img src="sumaho.png" alt="ドコノミ操作画面">
             </div>
 
-            <p class="hero-sub-bottom">今すぐ座れる店と「1秒マッチ」できるため、外で迷う時間や、無駄な階段の昇り降りを無くし、楽しい時間を増やします。</p>
-            <div style="margin-top: 30px;">
-                <a href="https://lin.ee/UvyrQHpY" target="_blank" onclick="trackClick('LINE_Hero')" class="cta-button">📍 お店とマッチする</a>
-            </div>
+            <p class="hero-sub-bottom">今すぐ座れる店と「1秒マッチ」。<br>外で迷う時間や無駄な移動を無くします。</p>
+            <a href="https://lin.ee/UvyrQHpY" target="_blank" onclick="trackClick('LINE_Hero')" class="cta-button">📍 お店を探す</a>
         </div>
     </header>
 
@@ -222,14 +175,13 @@
                 </div>
                 <div class="pain-card">
                     <span class="pain-illustration"><i class="fa-solid fa-comment-slash"></i></span>
-                    <p style="font-weight:900;">「次どこ行く？」の会話が<br>他人任せになる</p>
+                    <p style="font-weight:900;">「次どこ行く？」が<br>他人任せになる</p>
                 </div>
             </div>
-            <div class="arrow-divider"><i class="fa-solid fa-circle-chevron-down"></i></div>
-            <div class="solution-area text-center">
-                <div style="font-size: 1.8rem; font-weight: 900;">その悩み、</div>
+            <div class="solution-area">
+                <p style="font-weight: 900;">その悩み、</p>
                 <span class="brand-highlight">「ドコノミ」</span>
-                <div style="font-size: 1.8rem; font-weight: 900;">がすべて解決します！</div>
+                <p style="font-weight: 900;">が解決します！</p>
             </div>
         </div>
     </section>
@@ -238,9 +190,9 @@
         <div class="container">
             <h2>サービスの特徴</h2>
             <div class="feature-grid">
-                <div class="feature-card"><i class="fa-solid fa-bolt-lightning"></i><h3>1秒マッチ</h3><p>直感的なスワイプ機能で、迷わず次のお店へ</p></div>
-                <div class="feature-card"><i class="fa-solid fa-satellite-dish"></i><h3>リアルタイム空席表示</h3><p>今この瞬間に「空いている店」だけを表示</p></div>
-                <div class="feature-card"><i class="fa-solid fa-medal"></i><h3>厳選ラインナップ</h3><p>すすきのの人気店～隠れ家まで厳選掲載</p></div>
+                <div class="feature-card"><i class="fa-solid fa-bolt-lightning"></i><h3>1秒マッチ</h3><p>スワイプで迷わず決定</p></div>
+                <div class="feature-card"><i class="fa-solid fa-satellite-dish"></i><h3>リアルタイム</h3><p>今の「空き」だけ表示</p></div>
+                <div class="feature-card"><i class="fa-solid fa-medal"></i><h3>厳選店舗</h3><p>すすきのの人気店を掲載</p></div>
             </div>
             <a href="https://lin.ee/UvyrQHpY" target="_blank" onclick="trackClick('LINE_Feature')" class="cta-button">📍 今すぐ空席を探す</a>
         </div>
@@ -249,74 +201,47 @@
     <section class="flow-section text-center">
         <div class="container">
             <h2>ご利用の流れ</h2>
-            <div class="flow-container">
-                <div class="flow-step">
-                    <div class="step-num">1</div>
-                    <div class="flow-content"><strong>LINEで先行案内を受け取る</strong><p>公式LINEを友だち追加するだけで準備完了。</p></div>
-                </div>
-                <div class="flow-step">
-                    <div class="step-num">2</div>
-                    <div class="flow-content"><strong>ドコノミにアクセス</strong><p>登録・料金不要。Webからすぐに利用可能です。</p></div>
-                </div>
-                <div class="flow-step">
-                    <div class="step-num">3</div>
-                    <div class="flow-content"><strong>マッチング開始</strong><p>近くの空席を自動でリストアップします。</p></div>
-                </div>
-                <div class="flow-step">
-                    <div class="step-num">4</div>
-                    <div class="flow-content"><strong>スワイプで選ぶ</strong><p>直感的な操作で次のお店を決定します。</p></div>
-                </div>
-                <div class="flow-step">
-                    <div class="step-num">5</div>
-                    <div class="flow-content"><strong>即入店！</strong><p>無駄足のリスクなくスマートに入店できます。</p></div>
-                </div>
+            <div class="flow-step">
+                <div class="step-num">1</div>
+                <div class="flow-content"><strong>LINEで友だち追加</strong><p>先行案内をすぐ受け取れます。</p></div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">2</div>
+                <div class="flow-content"><strong>Webからアクセス</strong><p>登録・料金は一切不要です。</p></div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">3</div>
+                <div class="flow-content"><strong>スワイプで選んで即入店</strong><p>スマートに2軒目を楽しめます。</p></div>
             </div>
         </div>
     </section>
 
-    <section class="faq-section text-center">
+    <section class="contact-section text-center">
         <div class="container">
-            <h2>よくある質問</h2>
-            <div style="max-width: 700px; margin: 40px auto 0;">
-                <div class="faq-item"><div class="faq-q">Q. 料金はかかりますか？</div><div>A. いいえ、完全に無料でご利用いただけます。</div></div>
-                <div class="faq-item"><div class="faq-q">Q. 対応エリアはどこですか？</div><div>A. 札幌・すすきのエリア特化です。</div></div>
-                <div class="faq-item"><div class="faq-q">Q. LINE登録のメリットは？</div><div>A. クーポンや先行案内を受け取れます。</div></div>
-                <div class="faq-item"><div class="faq-q">Q. 予約は必要ですか？</div><div>A. 不要です。「今すぐ入れる」お店を探せます。</div></div>
-                <div class="faq-item"><div class="faq-q">Q. 1名でも利用可能ですか？</div><div>A. もちろん可能です。</div></div>
+            <h2>お問い合わせ</h2>
+            <div class="contact-card">
+                <h3>提携店募集</h3>
+                <p>集客を最大化したい店主様へ</p>
+                <a href="https://forms.gle/DQpruPpwVG5qfceE8" target="_blank" onclick="trackClick('Partner_Form')" class="btn-contact btn-red">詳細を見る</a>
             </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact-section text-center">
-        <div class="container">
-            <h2>提携店募集とお問い合わせ</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-icon icon-red"><i class="fa-solid fa-store"></i></div>
-                    <h3>提携店募集</h3>
-                    <p>空席を有効活用し、集客を最大化したい店主様を募集中です。</p>
-                    <a href="https://forms.gle/DQpruPpwVG5qfceE8" target="_blank" onclick="trackClick('Partner_Form')" class="btn-contact btn-red">提携店募集を詳しく見る <i class="fa-solid fa-chevron-right"></i></a>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon icon-blue"><i class="fa-solid fa-envelope-open-text"></i></div>
-                    <h3>お問い合わせ</h3>
-                    <p>サービスに関するご質問やご相談はこちらのフォームより。</p>
-                    <a href="https://forms.gle/DQpruPpwVG5qfceE8" target="_blank" onclick="trackClick('Contact_Form')" class="btn-contact btn-blue">お問い合わせフォーム <i class="fa-solid fa-chevron-right"></i></a>
-                </div>
+            <div class="contact-card">
+                <h3>ご質問</h3>
+                <p>サービスに関するお問い合わせ</p>
+                <a href="https://forms.gle/DQpruPpwVG5qfceE8" target="_blank" onclick="trackClick('Contact_Form')" class="btn-contact btn-blue">フォームを開く</a>
             </div>
         </div>
     </section>
 
     <section class="final-area text-center">
         <div class="container">
-            <p class="final-message">最高の2軒目体験を、ドコノミで。</p>
-            <a href="https://lin.ee/UvyrQHpY" target="_blank" onclick="trackClick('LINE_Final')" class="cta-button">📍 お店とマッチする</a>
+            <p class="final-message">最高の2軒目体験を。</p>
+            <a href="https://lin.ee/UvyrQHpY" target="_blank" onclick="trackClick('LINE_Final')" class="cta-button">📍 お店を探す</a>
         </div>
     </section>
 
     <footer class="text-center">
         <div class="container">
-            <p style="color: #888; font-size: 0.8rem;">&copy; 2026 ドコノミ | すすきの居酒屋空席マッチング</p>
+            <p>&copy; 2026 ドコノミ | すすきの空席マッチング</p>
         </div>
     </footer>
 
