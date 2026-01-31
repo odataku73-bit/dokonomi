@@ -42,10 +42,11 @@
             color: var(--text-main);
             background-color: var(--white);
             line-height: 1.8;
+            overflow-x: hidden; /* 横揺れ防止 */
         }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
-        .text-center { text-align: center; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; box-sizing: border-box; }
+        .text-center { text-align: center; width: 100%; display: block; }
 
         /* --- Animations --- */
         @keyframes pulse {
@@ -94,9 +95,9 @@
 
         /* --- Hero --- */
         .hero { padding: 60px 0 100px; background: radial-gradient(circle at top right, #EAF7E9 0%, #ffffff 70%); border-bottom: 1px solid #eee; }
-        .hero-logo-main { font-weight: 900; color: var(--primary-green); font-size: 2.2rem; margin-bottom: 10px; }
+        .hero-logo-main { font-weight: 900; color: var(--primary-green); font-size: 2.2rem; margin-bottom: 10px; display: block; }
         h1 { font-size: 3.2rem; font-weight: 900; line-height: 1.2; margin: 0 0 20px; letter-spacing: -0.02em; }
-        .hero-sub-top { font-size: 1.2rem; font-weight: 700; color: var(--text-sub); margin-bottom: 40px; }
+        .hero-sub-top { font-size: 1.2rem; font-weight: 700; color: var(--text-sub); margin-bottom: 40px; line-height: 1.4; }
         .hero-sub-bottom { font-size: 1.1rem; color: var(--text-main); line-height: 1.6; max-width: 700px; margin: 40px auto; }
         .cta-button { 
             display: inline-block; background: var(--primary-green); color: #fff; padding: 22px 60px; border-radius: 100px; 
@@ -132,7 +133,7 @@
         .pain-card:hover { border-color: var(--primary-green); box-shadow: 0 20px 45px rgba(92, 184, 92, 0.15); }
         .pain-illustration { font-size: 4rem; color: var(--primary-green); margin-bottom: 20px; display: block; }
         .arrow-divider { font-size: 4rem; color: var(--primary-green); margin: 40px 0; animation: bounce 2s infinite; }
-        .brand-highlight { color: var(--primary-green); font-size: 4.5rem; display: block; font-weight: 900; }
+        .brand-highlight { color: var(--primary-green); font-size: 4.5rem; display: block; font-weight: 900; margin: 10px 0; }
 
         /* --- 特徴 --- */
         .feature-section { padding: 100px 0; background-color: var(--bg-light); border-top: 1px solid #e0ede0; border-bottom: 1px solid #e0ede0; }
@@ -167,15 +168,22 @@
         .btn-blue { background: var(--accent-blue); box-shadow: 0 6px 15px rgba(51, 122, 183, 0.3); }
 
         .final-area { padding: 120px 0; background: var(--white); border-top: 1px solid #eee; }
-        .final-message { font-size: 2.2rem; font-weight: 900; margin-bottom: 50px; line-height: 1.4; }
+        .final-message { font-size: 2.2rem; font-weight: 900; margin-bottom: 50px; line-height: 1.4; display: block; }
 
         footer { background: #2D3436; color: #fff; padding: 60px 0; }
 
+        /* スマホ向けの厳密な調整 */
         @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            .brand-highlight { font-size: 3.5rem; }
-            .header-logo { font-size: 1.1rem; }
-            .mockup-container { width: 240px; }
+            h1 { font-size: 2.1rem; line-height: 1.3; }
+            .hero-logo-main { font-size: 1.5rem; }
+            .hero-sub-top { font-size: 0.95rem; margin-bottom: 30px; }
+            .hero-sub-bottom { font-size: 0.95rem; max-width: 90%; margin: 30px auto; }
+            .brand-highlight { font-size: 3.2rem; }
+            .mockup-container { width: 220px; }
+            .cta-button { font-size: 1.1rem; padding: 18px 40px; }
+            .pain-section, .feature-section, .flow-section, .faq-section, .contact-section, .final-area { padding: 60px 0; }
+            h2 { font-size: 1.6rem; margin-bottom: 40px; }
+            .final-message { font-size: 1.6rem; margin-bottom: 30px; }
         }
     </style>
 </head>
@@ -195,13 +203,13 @@
         <div class="container">
             <div class="hero-logo-main">ドコノミ</div>
             <h1>1秒で決めて、<br>即入店。</h1>
-            <p class="hero-sub-top">もう、2軒目探しでグダらない。ススキノの空席を、最短0秒で</p>
+            <p class="hero-sub-top">もう、2軒目探しでグダらない。<br>ススキノの空席を、最短0秒で</p>
             
             <div class="mockup-container">
                 <img src="sumaho.png" alt="ドコノミ操作画面">
             </div>
 
-            <p class="hero-sub-bottom">今すぐ座れるお店と「1秒マッチ」できるため、外で迷う時間や、無駄な階段の昇り降りを無くし、楽しい時間を増やします。</p>
+            <p class="hero-sub-bottom">今すぐ座れるお店と「1秒マッチ」。<br>外で迷う時間や無駄な移動を無くし、<br>楽しい時間を増やします。</p>
             <div style="margin-top: 30px;">
                 <a href="https://lin.ee/UvyrQHpY" target="_blank" onclick="trackClick('LINE_Hero')" class="cta-button">📍 お店とマッチする</a>
             </div>
@@ -227,9 +235,9 @@
             </div>
             <div class="arrow-divider"><i class="fa-solid fa-circle-chevron-down"></i></div>
             <div class="solution-area text-center">
-                <div style="font-size: 1.8rem; font-weight: 900;">その悩み、</div>
+                <div style="font-size: 1.5rem; font-weight: 900;">その悩み、</div>
                 <span class="brand-highlight">「ドコノミ」</span>
-                <div style="font-size: 1.8rem; font-weight: 900;">がすべて解決します！</div>
+                <div style="font-size: 1.5rem; font-weight: 900;">がすべて解決します！</div>
             </div>
         </div>
     </section>
@@ -238,9 +246,9 @@
         <div class="container">
             <h2>サービスの特徴</h2>
             <div class="feature-grid">
-                <div class="feature-card"><i class="fa-solid fa-bolt-lightning"></i><h3>1秒マッチ</h3><p>直感的なスワイプ機能で、迷わず次のお店へ</p></div>
-                <div class="feature-card"><i class="fa-solid fa-satellite-dish"></i><h3>リアルタイム空席表示</h3><p>今この瞬間に「空いている店」だけを表示</p></div>
-                <div class="feature-card"><i class="fa-solid fa-medal"></i><h3>厳選ラインナップ</h3><p>すすきのの人気店～隠れ家まで厳選掲載</p></div>
+                <div class="feature-card"><i class="fa-solid fa-bolt-lightning"></i><h3>1秒マッチ</h3><p>直感的なスワイプ機能で、<br>迷わず次のお店へ</p></div>
+                <div class="feature-card"><i class="fa-solid fa-satellite-dish"></i><h3>リアルタイム空席表示</h3><p>今この瞬間に<br>「空いている店」だけを表示</p></div>
+                <div class="feature-card"><i class="fa-solid fa-medal"></i><h3>厳選ラインナップ</h3><p>すすきのの人気店から<br>隠れ家まで厳選掲載</p></div>
             </div>
             <a href="https://lin.ee/UvyrQHpY" target="_blank" onclick="trackClick('LINE_Feature')" class="cta-button">📍 今すぐ空席を探す</a>
         </div>
@@ -260,15 +268,7 @@
                 </div>
                 <div class="flow-step">
                     <div class="step-num">3</div>
-                    <div class="flow-content"><strong>マッチング開始</strong><p>近くの空席を自動でリストアップします。</p></div>
-                </div>
-                <div class="flow-step">
-                    <div class="step-num">4</div>
-                    <div class="flow-content"><strong>スワイプで選ぶ</strong><p>直感的な操作で次のお店を決定します。</p></div>
-                </div>
-                <div class="flow-step">
-                    <div class="step-num">5</div>
-                    <div class="flow-content"><strong>即入店！</strong><p>無駄足のリスクなくスマートに入店できます。</p></div>
+                    <div class="flow-content"><strong>選んですぐに入店！</strong><p>近くの空席をリストアップ。スマートに2軒目を楽しめます。</p></div>
                 </div>
             </div>
         </div>
@@ -277,31 +277,28 @@
     <section class="faq-section text-center">
         <div class="container">
             <h2>よくある質問</h2>
-            <div style="max-width: 700px; margin: 40px auto 0;">
+            <div style="max-width: 700px; margin: 0 auto;">
                 <div class="faq-item"><div class="faq-q">Q. 料金はかかりますか？</div><div>A. いいえ、完全に無料でご利用いただけます。</div></div>
-                <div class="faq-item"><div class="faq-q">Q. 対応エリアはどこですか？</div><div>A. 札幌・すすきのエリア特化です。</div></div>
-                <div class="faq-item"><div class="faq-q">Q. LINE登録のメリットは？</div><div>A. クーポンや先行案内を受け取れます。</div></div>
                 <div class="faq-item"><div class="faq-q">Q. 予約は必要ですか？</div><div>A. 不要です。「今すぐ入れる」お店を探せます。</div></div>
-                <div class="faq-item"><div class="faq-q">Q. 1名でも利用可能ですか？</div><div>A. もちろん可能です。</div></div>
             </div>
         </div>
     </section>
 
     <section id="contact" class="contact-section text-center">
         <div class="container">
-            <h2>提携店募集とお問い合わせ</h2>
+            <h2>お問い合わせ</h2>
             <div class="contact-grid">
                 <div class="contact-card">
                     <div class="contact-icon icon-red"><i class="fa-solid fa-store"></i></div>
                     <h3>提携店募集</h3>
-                    <p>空席を有効活用し、集客を最大化したい店主様を随時募集中です。</p>
-                    <a href="https://forms.gle/DQpruPpwVG5qfceE8" target="_blank" onclick="trackClick('Partner_Form')" class="btn-contact btn-red">提携店募集を詳しく見る <i class="fa-solid fa-chevron-right"></i></a>
+                    <p>空席を有効活用したい店主様を随時募集中です。</p>
+                    <a href="https://forms.gle/DQpruPpwVG5qfceE8" target="_blank" onclick="trackClick('Partner_Form')" class="btn-contact btn-red">詳細はこちら <i class="fa-solid fa-chevron-right"></i></a>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon icon-blue"><i class="fa-solid fa-envelope-open-text"></i></div>
-                    <h3>お問い合わせ</h3>
-                    <p>サービスに関するご質問やご相談は、こちらのフォームから</p>
-                    <a href="https://forms.gle/DQpruPpwVG5qfceE8" target="_blank" onclick="trackClick('Contact_Form')" class="btn-contact btn-blue">お問い合わせフォーム <i class="fa-solid fa-chevron-right"></i></a>
+                    <h3>ご相談</h3>
+                    <p>サービスに関するお問い合わせはこちら。</p>
+                    <a href="https://forms.gle/DQpruPpwVG5qfceE8" target="_blank" onclick="trackClick('Contact_Form')" class="btn-contact btn-blue">フォームを開く <i class="fa-solid fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>
@@ -309,18 +306,16 @@
 
     <section class="final-area text-center">
         <div class="container">
-            　　<p class="final-message">最高の2軒目体験を　ドコノミで。</p>
+            <p class="final-message">最高の2軒目体験を<br>ドコノミで</p>
             <a href="https://lin.ee/UvyrQHpY" target="_blank" onclick="trackClick('LINE_Final')" class="cta-button">📍 お店とマッチする</a>
         </div>
     </section>
 
     <footer class="text-center">
         <div class="container">
-            <p style="color: #888; font-size: 0.8rem;">&copy; 2026 ドコノミ | すすきの居酒屋空席マッチング</p>
+            <p style="color: #888; font-size: 0.8rem;">&copy; 2026 ドコノミ | すすきの空席マッチング</p>
         </div>
     </footer>
 
 </body>
 </html>
-
-
